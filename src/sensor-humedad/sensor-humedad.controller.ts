@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post } from '@nestjs/common';
 import { SensorHumedadService } from './sensor-humedad.service';
 import { CreateSensorHumedadDto } from './dto/create-sensor-humedad.dto';
 
@@ -7,12 +7,42 @@ export class SensorHumedadController {
   constructor(private readonly sensorHumedadService: SensorHumedadService) {}
 
   @Post()
-  create(@Body() createSensorHumedadDto: CreateSensorHumedadDto) {
-    return this.sensorHumedadService.create(createSensorHumedadDto);
+  insertValue(@Body() data: CreateSensorHumedadDto) {
+    return this.sensorHumedadService.create(data);
   }
 
-  @Get()
-  findAll() {
-    return this.sensorHumedadService.findAll();
+  @Get(':date')
+  findAllByDate(@Param('date') date: string) {
+    return this.sensorHumedadService.findAllByDate(date);
+  }
+
+  @Get('valve')
+  getValveState() {
+    return this.sensorHumedadService.getValveState();
+  }
+
+  @Get('valve/on')
+  setValveOn() {
+    return this.sensorHumedadService.setValveOn();
+  }
+
+  @Get('valve/off')
+  setValveOff() {
+    return this.sensorHumedadService.setValveOff();
+  }
+
+  @Get('alarm')
+  getAlarmState() {
+    return this.sensorHumedadService.getAlarmState();
+  }
+
+  @Get('alarm/on')
+  setAlarmOn() {
+    return this.sensorHumedadService.setAlarmOn();
+  }
+
+  @Get('alarm/off')
+  setAlarmOff() {
+    return this.sensorHumedadService.setAlarmOff();
   }
 }

@@ -1,6 +1,8 @@
 import { ConfigService } from '@nestjs/config';
 import { Sequelize } from 'sequelize-typescript';
+import { AlarmState } from 'src/sensor-humedad/entities/alarm-state.entity';
 import { SensorHumedad } from 'src/sensor-humedad/entities/sensor-humedad.entity';
+import { ValveState } from 'src/sensor-humedad/entities/valve-state.entity';
 
 export const databaseProviders = [
   {
@@ -14,7 +16,7 @@ export const databaseProviders = [
         password: configService.get('DATABASE_PASSWORD'),
         database: configService.get('DATABASE_NAME'),
       });
-      sequelize.addModels([SensorHumedad]);
+      sequelize.addModels([SensorHumedad, ValveState, AlarmState]);
       await sequelize.sync();
       return sequelize;
     },

@@ -1,10 +1,10 @@
 import { Column, DataType, Model, Table } from 'sequelize-typescript';
 
 @Table({
-  tableName: 'SENSOR_HUMEDAD_DATA',
+  tableName: 'ALARM_STATE',
   timestamps: true,
 })
-export class SensorHumedad extends Model<SensorHumedad> {
+export class AlarmState extends Model<AlarmState> {
   @Column({
     type: DataType.INTEGER,
     primaryKey: true,
@@ -13,8 +13,8 @@ export class SensorHumedad extends Model<SensorHumedad> {
   declare id: number;
 
   @Column({
-    type: DataType.FLOAT,
+    type: DataType.BOOLEAN,
     allowNull: false,
   })
-  value: number;
+  state: boolean;
 }
