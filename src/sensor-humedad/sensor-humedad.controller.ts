@@ -11,12 +11,12 @@ export class SensorHumedadController {
     return this.sensorHumedadService.create(data);
   }
 
-  @Get(':date')
+  @Get('data/:date')
   findAllByDate(@Param('date') date: string) {
     return this.sensorHumedadService.findAllByDate(date);
   }
 
-  @Get('valve')
+  @Get('valve/state')
   getValveState() {
     return this.sensorHumedadService.getValveState();
   }

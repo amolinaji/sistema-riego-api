@@ -4,7 +4,6 @@ import { SensorHumedad } from './entities/sensor-humedad.entity';
 import { ValveState } from './entities/valve-state.entity';
 import { AlarmState } from './entities/alarm-state.entity';
 import { Op } from 'sequelize';
-import { WebSocketGateway } from '@nestjs/websockets';
 import { WebsocketGateway } from 'src/websocket/websocket.gateway';
 
 @Injectable()
@@ -58,11 +57,16 @@ export class SensorHumedadService {
   }
 
   async getAlarmState() {
-    return await this.alarmStateRepository.findOne({ where: { id: 1 } });
+    const valve = await this.alarmStateRepository.findOne({ where: { id: 1 } });
+    console.log(valve);
+    return valve;
   }
 
   async getValveState() {
-    return await this.valveStateRepository.findOne({ where: { id: 1 } });
+    return await this.valveStateRepository.findOne({
+      where: { id: 1 },
+      attributes: ['state'],
+    });
   }
 
   async findAllByDate(date: string) {
