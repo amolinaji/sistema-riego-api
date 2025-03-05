@@ -70,6 +70,7 @@ export class SensorHumedadService {
   }
 
   async findAllByDate(date: string) {
+    console.log("DATE: ", date);
     return await this.sensorHumedadRepository.findAll({
       where: {
         createdAt: {
