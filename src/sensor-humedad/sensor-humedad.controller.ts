@@ -8,6 +8,7 @@ export class SensorHumedadController {
 
   @Post()
   insertValue(@Body() data: CreateSensorHumedadDto) {
+    console.log(data);
     return this.sensorHumedadService.create(data);
   }
 
