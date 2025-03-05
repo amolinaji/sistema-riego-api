@@ -5,7 +5,7 @@ import { ValveState } from './entities/valve-state.entity';
 import { AlarmState } from './entities/alarm-state.entity';
 import { Op } from 'sequelize';
 import { WebsocketGateway } from 'src/websocket/websocket.gateway';
-
+import moment from "moment-timezone";
 @Injectable()
 export class SensorHumedadService {
   constructor(
@@ -69,16 +69,18 @@ export class SensorHumedadService {
   }
 
   async findAllByDate(date: string) {
-  const startDate = new Date(`${date}T00:00:00.000Z`);
-  const endDate = new Date(`${date}T23:59:59.999Z`);
-  
-  console.log("START DATE: ", startDate);
-  console.log("END DATE: ", endDate);
+  console.log("DATE: ", date);
+
+  // Convertir el inicio y fin del día a zona horaria de Colombia
+  const startOfDay = moment.tz(`${date} 00:00:00`, "America/Bogota").toDate();
+  const endOfDay = moment.tz(`${date} 23:59:59.999`, "America/Bogota").toDate();
+
+  console.log("START:", startOfDay, "END:", endOfDay);
 
   return await this.sensorHumedadRepository.findAll({
     where: {
       createdAt: {
-        [Op.between]: [startDate, endDate],
+        [Op.between]: [startOfDay, endOfDay],
       },
     },
   });
