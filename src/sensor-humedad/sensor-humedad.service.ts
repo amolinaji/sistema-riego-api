@@ -69,16 +69,19 @@ export class SensorHumedadService {
   }
 
   async findAllByDate(date: string) {
-    console.log("DATE: ", date);
-    return await this.sensorHumedadRepository.findAll({
-      where: {
-        createdAt: {
-          [Op.between]: [
-            new Date(`${date}T00:00:00.000Z`),
-            new Date(`${date}T23:59:59.999Z`),
-          ],
-        },
+  const startDate = new Date(`${date}T00:00:00.000Z`);
+  const endDate = new Date(`${date}T23:59:59.999Z`);
+  
+  console.log("START DATE: ", startDate);
+  console.log("END DATE: ", endDate);
+
+  return await this.sensorHumedadRepository.findAll({
+    where: {
+      createdAt: {
+        [Op.between]: [startDate, endDate],
       },
-    });
-  }
+    },
+  });
+}
+
 }
