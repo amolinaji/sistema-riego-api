@@ -16,5 +16,5 @@ export class ValveState extends Model<ValveState> {
     type: DataType.BOOLEAN,
     allowNull: false,
   })
-  state: boolean;
+  declare state: boolean;
 }
