@@ -10,11 +10,11 @@ export class ValveState extends Model<ValveState> {
     primaryKey: true,
     autoIncrement: true,
   })
-  declare id: number;
+   id: number;
 
   @Column({
     type: DataType.BOOLEAN,
     allowNull: false,
   })
-  declare state: boolean;
+   state: boolean;
 }
