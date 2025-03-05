@@ -4,7 +4,7 @@ import { Column, DataType, Model, Table } from 'sequelize-typescript';
   tableName: 'ALARM_STATE',
   timestamps: true,
 })
-export class AlarmState extends{
+export class AlarmState extends Model{
   @Column({
     type: DataType.INTEGER,
     primaryKey: true,
