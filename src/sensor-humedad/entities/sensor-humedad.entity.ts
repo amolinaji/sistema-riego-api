@@ -10,11 +10,11 @@ export class SensorHumedad extends Model<SensorHumedad> {
     primaryKey: true,
     autoIncrement: true,
   })
-  declare id: number;
+   id: number;
 
   @Column({
     type: DataType.FLOAT,
     allowNull: false,
   })
-  declare value: number;
+   value: number;
 }
