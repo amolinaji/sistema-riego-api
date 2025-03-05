@@ -16,5 +16,5 @@ export class SensorHumedad extends Model<SensorHumedad> {
     type: DataType.FLOAT,
     allowNull: false,
   })
-  value: number;
+  declare value: number;
 }
