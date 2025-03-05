@@ -10,7 +10,7 @@ export class SensorHumedad extends Model<SensorHumedad> {
     primaryKey: true,
     autoIncrement: true,
   })
-   id: number;
+   declare id: number;
 
   @Column({
     type: DataType.FLOAT,
