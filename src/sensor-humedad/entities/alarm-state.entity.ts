@@ -10,7 +10,7 @@ export class AlarmState extends Model<AlarmState> {
     primaryKey: true,
     autoIncrement: true,
   })
-   id: number;
+  declare id: number;
 
   @Column({
     type: DataType.BOOLEAN,
