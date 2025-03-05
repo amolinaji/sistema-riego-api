@@ -7,43 +7,43 @@ export class SensorHumedadController {
   constructor(private readonly sensorHumedadService: SensorHumedadService) {}
 
   @Post()
-  insertValue(@Body() data: CreateSensorHumedadDto) {
+  async insertValue(@Body() data: CreateSensorHumedadDto) {
     console.log(data);
-    return this.sensorHumedadService.create(data);
+    return await this.sensorHumedadService.create(data);
   }
 
   @Get('data/:date')
-  findAllByDate(@Param('date') date: string) {
-    return this.sensorHumedadService.findAllByDate(date);
+  async findAllByDate(@Param('date') date: string) {
+    return await this.sensorHumedadService.findAllByDate(date);
   }
 
   @Get('valve/state')
-  getValveState() {
-    return this.sensorHumedadService.getValveState();
+  async getValveState() {
+    return await this.sensorHumedadService.getValveState();
   }
 
   @Get('valve/on')
-  setValveOn() {
-    return this.sensorHumedadService.setValveOn();
+  async setValveOn() {
+    return await this.sensorHumedadService.setValveOn();
   }
 
   @Get('valve/off')
-  setValveOff() {
-    return this.sensorHumedadService.setValveOff();
+  async setValveOff() {
+    return await this.sensorHumedadService.setValveOff();
   }
 
   @Get('alarm')
-  getAlarmState() {
-    return this.sensorHumedadService.getAlarmState();
+  async getAlarmState() {
+    return await this.sensorHumedadService.getAlarmState();
   }
 
   @Get('alarm/on')
-  setAlarmOn() {
-    return this.sensorHumedadService.setAlarmOn();
+  async setAlarmOn() {
+    return await this.sensorHumedadService.setAlarmOn();
   }
 
   @Get('alarm/off')
-  setAlarmOff() {
-    return this.sensorHumedadService.setAlarmOff();
+ async setAlarmOff() {
+    return await this.sensorHumedadService.setAlarmOff();
   }
 }
