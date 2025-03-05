@@ -16,5 +16,5 @@ export class AlarmState extends Model<AlarmState> {
     type: DataType.BOOLEAN,
     allowNull: false,
   })
-  state: boolean;
+  declare state: boolean;
 }
