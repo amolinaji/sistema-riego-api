@@ -57,9 +57,8 @@ export class SensorHumedadService {
   }
 
   async getAlarmState() {
-    const valve = await this.alarmStateRepository.findOne({ where: { id: 1 } });
-    console.log(valve);
-    return valve;
+    return await this.alarmStateRepository.findOne({ where: { id: 1 }, attributes: ['state'] });
+
   }
 
   async getValveState() {
