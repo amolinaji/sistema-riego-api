@@ -4,7 +4,7 @@ import { Column, DataType, Model, Table } from 'sequelize-typescript';
   tableName: 'VALVE_STATE',
   timestamps: true,
 })
-export class ValveState extends Model<ValveState> {
+export class ValveState extends Model {
   @Column({
     type: DataType.INTEGER,
     primaryKey: true,
